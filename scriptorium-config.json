@@ -1,0 +1,47 @@
+{
+  "mcpServers": {
+    "launcher-server": {
+      "url": "http://localhost:3050/sse",
+      "transport": "sse",
+      "description": "MCP Launcher - Orquestador de servidores MCP del Scriptorium"
+    },
+    "prolog-mcp-server": {
+      "url": "http://localhost:3006/sse",
+      "transport": "sse",
+      "description": "Prolog MCP Server - Queries Prolog + Knowledge Base management"
+    },
+    "typed-prompt-mcp-server": {
+      "url": "http://localhost:3020/sse",
+      "transport": "sse",
+      "description": "TypedPrompt MCP Server - Schema validation + ontology management"
+    },
+    "AlephAlpha": {
+      "url": "http://localhost:3066/sse",
+      "transport": "sse",
+      "description": "Novelist MCP Server - Novel editing and management"
+    },
+    "copilot-logs-mcp-server": {
+      "url": "http://localhost:3100/sse",
+      "transport": "sse",
+      "description": "Copilot Logs MCP Server - Snapshots y métricas de sesiones"
+    },
+    "devops-mcp-server": {
+      "url": "http://localhost:3003/sse",
+      "transport": "sse",
+      "description": "DevOps MCP Server - Context packs y automatización"
+    },
+    "wiki-browser-server": {
+      "url": "http://localhost:3002/sse",
+      "transport": "sse",
+      "description": "Wiki Browser Server - Wikipedia browsing"
+    },
+    "state-machine-server": {
+      "url": "http://localhost:3004/sse",
+      "transport": "sse",
+      "description": "State Machine Server - X+1 state machine"
+    }
+  },
+  "defaults": {
+    "server": "launcher-server"
+  }
+}
