@@ -22,16 +22,16 @@ Interfaz visual para inspeccionar, depurar y probar servidores MCP. Permite cone
 
 El archivo `scriptorium-config.json` contiene los servidores MCP del ecosistema:
 
-| Servidor                    | Puerto | Transporte | Descripción                    |
-| --------------------------- | ------ | ---------- | ------------------------------ |
-| **launcher-server**         | 3050   | HTTP/SSE   | Orquestador de servidores MCP  |
-| **prolog-mcp-server**       | 3006   | HTTP/SSE   | Queries Prolog + KB management |
-| **typed-prompt-mcp-server** | 3020   | HTTP/SSE   | Validación de ontologías       |
-| **copilot-logs-mcp-server** | 3100   | HTTP/SSE   | Snapshots y métricas Copilot   |
-| **devops-mcp-server**       | 3003   | HTTP/SSE   | Automatización DevOps          |
-| **AlephAlpha**              | 3066   | HTTP/SSE   | Novelist MCP Server            |
-| **wiki-browser-server**     | 3002   | HTTP/SSE   | Wikipedia browsing             |
-| **state-machine-server**    | 3004   | HTTP/SSE   | X+1 state machine              |
+| Servidor                    | Puerto | Transporte      | Descripción                    |
+| --------------------------- | ------ | --------------- | ------------------------------ |
+| **launcher-server**         | 3050   | Streamable HTTP | Orquestador de servidores MCP  |
+| **prolog-mcp-server**       | 3006   | Streamable HTTP | Queries Prolog + KB management |
+| **typed-prompt-mcp-server** | 3020   | Streamable HTTP | Validación de ontologías       |
+| **copilot-logs-mcp-server** | 3100   | Streamable HTTP | Snapshots y métricas Copilot   |
+| **devops-mcp-server**       | 3003   | Streamable HTTP | Automatización DevOps          |
+| **AlephAlpha**              | 3066   | Streamable HTTP | Novelist MCP Server            |
+| **wiki-browser-server**     | 3002   | Streamable HTTP | Wikipedia browsing             |
+| **state-machine-server**    | 3004   | Streamable HTTP | X+1 state machine              |
 
 ### Uso Rápido
 
@@ -71,14 +71,14 @@ http://localhost:6274?transport=sse&serverUrl=http://localhost:3006/sse
 
 ### URLs Directas por Servidor
 
-| Servidor    | URL Inspector                                                             |
-| ----------- | ------------------------------------------------------------------------- |
-| Launcher    | `http://localhost:6274?transport=sse&serverUrl=http://localhost:3050/sse` |
-| Prolog      | `http://localhost:6274?transport=sse&serverUrl=http://localhost:3006/sse` |
-| TypedPrompt | `http://localhost:6274?transport=sse&serverUrl=http://localhost:3020/sse` |
-| Novelist    | `http://localhost:6274?transport=sse&serverUrl=http://localhost:3066/sse` |
-| DevOps      | `http://localhost:6274?transport=sse&serverUrl=http://localhost:3003/sse` |
-| CopilotLogs | `http://localhost:6274?transport=sse&serverUrl=http://localhost:3100/sse` |
+| Servidor    | URL Inspector                                                                          |
+| ----------- | -------------------------------------------------------------------------------------- |
+| Launcher    | `http://localhost:6274?transport=streamable-http&serverUrl=http://localhost:3050/http` |
+| Prolog      | `http://localhost:6274?transport=streamable-http&serverUrl=http://localhost:3006/http` |
+| TypedPrompt | `http://localhost:6274?transport=streamable-http&serverUrl=http://localhost:3020/http` |
+| Novelist    | `http://localhost:6274?transport=streamable-http&serverUrl=http://localhost:3066/http` |
+| DevOps      | `http://localhost:6274?transport=streamable-http&serverUrl=http://localhost:3003/http` |
+| CopilotLogs | `http://localhost:6274?transport=streamable-http&serverUrl=http://localhost:3100/http` |
 
 ---
 

@@ -15,6 +15,7 @@ import {
   Copy,
   CheckCheck,
   Server,
+  Plug,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -42,6 +43,60 @@ import CustomHeaders from "./CustomHeaders";
 import { CustomHeaders as CustomHeadersType } from "@/lib/types/customHeaders";
 import { useToast } from "../lib/hooks/useToast";
 import IconDisplay, { WithIcons } from "./IconDisplay";
+
+// ═══════════════════════════════════════════════════════════════════════════
+// Scriptorium MCP Servers - Pre-configured servers from .vscode/mcp.json
+// ═══════════════════════════════════════════════════════════════════════════
+const SCRIPTORIUM_SERVERS = [
+  {
+    id: "launcher-server",
+    name: "🚀 Launcher",
+    port: 3050,
+    description: "Orquestador MCP",
+  },
+  {
+    id: "prolog-mcp-server",
+    name: "🔬 Prolog",
+    port: 3006,
+    description: "Queries + KB",
+  },
+  {
+    id: "typed-prompt-mcp-server",
+    name: "🧠 TypedPrompt",
+    port: 3020,
+    description: "Schema validation",
+  },
+  {
+    id: "AlephAlpha",
+    name: "📝 Novelist",
+    port: 3066,
+    description: "Novel editing",
+  },
+  {
+    id: "copilot-logs-mcp-server",
+    name: "📊 CopilotLogs",
+    port: 3100,
+    description: "Snapshots",
+  },
+  {
+    id: "devops-mcp-server",
+    name: "⚙️ DevOps",
+    port: 3003,
+    description: "Automation",
+  },
+  {
+    id: "wiki-browser-server",
+    name: "📚 Wiki",
+    port: 3002,
+    description: "Wikipedia",
+  },
+  {
+    id: "state-machine-server",
+    name: "🔄 StateMachine",
+    port: 3004,
+    description: "X+1 FSM",
+  },
+];
 
 interface SidebarProps {
   connectionStatus: ConnectionStatus;
@@ -113,6 +168,7 @@ const Sidebar = ({
   const [showEnvVars, setShowEnvVars] = useState(false);
   const [showAuthConfig, setShowAuthConfig] = useState(false);
   const [showConfig, setShowConfig] = useState(false);
+  const [showScriptoriumServers, setShowScriptoriumServers] = useState(true); // Scriptorium servers panel
   const [shownEnvVars, setShownEnvVars] = useState<Set<string>>(new Set());
   const [showClientSecret, setShowClientSecret] = useState(false);
   const [copiedServerEntry, setCopiedServerEntry] = useState(false);
@@ -269,6 +325,86 @@ const Sidebar = ({
               </SelectContent>
             </Select>
           </div>
+
+          {/* ═══════════════════════════════════════════════════════════════════
+              Scriptorium Servers - Quick Connect Table
+              ═══════════════════════════════════════════════════════════════════ */}
+          {transportType !== "stdio" && (
+            <div className="space-y-2">
+              <Button
+                variant="outline"
+                onClick={() =>
+                  setShowScriptoriumServers(!showScriptoriumServers)
+                }
+                className="flex items-center w-full"
+                data-testid="scriptorium-servers-button"
+                aria-expanded={showScriptoriumServers}
+              >
+                {showScriptoriumServers ? (
+                  <ChevronDown className="w-4 h-4 mr-2" />
+                ) : (
+                  <ChevronRight className="w-4 h-4 mr-2" />
+                )}
+                <Server className="w-4 h-4 mr-2" />
+                Scriptorium Servers
+              </Button>
+              {showScriptoriumServers && (
+                <div className="rounded-md border border-border overflow-hidden">
+                  <table className="w-full text-sm">
+                    <thead className="bg-muted/50">
+                      <tr>
+                        <th className="px-2 py-1.5 text-left font-medium">
+                          Server
+                        </th>
+                        <th className="px-2 py-1.5 text-left font-medium">
+                          Port
+                        </th>
+                        <th className="px-2 py-1.5 text-right font-medium"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {SCRIPTORIUM_SERVERS.map((server) => (
+                        <tr
+                          key={server.id}
+                          className="border-t border-border hover:bg-muted/30"
+                        >
+                          <td className="px-2 py-1.5">
+                            <div className="font-medium">{server.name}</div>
+                            <div className="text-xs text-muted-foreground">
+                              {server.description}
+                            </div>
+                          </td>
+                          <td className="px-2 py-1.5 font-mono text-xs">
+                            {server.port}
+                          </td>
+                          <td className="px-2 py-1.5 text-right">
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="h-7 px-2"
+                              onClick={() => {
+                                setTransportType("streamable-http");
+                                setSseUrl(
+                                  `http://localhost:${server.port}/mcp`,
+                                );
+                                toast({
+                                  title: `${server.name} selected`,
+                                  description: `URL set to localhost:${server.port}`,
+                                });
+                              }}
+                            >
+                              <Plug className="w-3 h-3 mr-1" />
+                              Select
+                            </Button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+          )}
 
           {transportType === "stdio" ? (
             <>
