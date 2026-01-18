@@ -61,6 +61,12 @@ const SCRIPTORIUM_SERVERS = [
     description: "Queries + KB",
   },
   {
+    id: "aaia-mcp-server",
+    name: "🧠 AAIA",
+    port: 3007,
+    description: "FIAs Gallery",
+  },
+  {
     id: "typed-prompt-mcp-server",
     name: "🧠 TypedPrompt",
     port: 3020,

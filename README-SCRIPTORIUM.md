@@ -71,16 +71,10 @@ http://localhost:6274?transport=sse&serverUrl=http://localhost:3006/sse
 
 ### URLs Directas por Servidor
 
-| Servidor    | URL Inspector                                                                          |
-| ----------- | -------------------------------------------------------------------------------------- |
-| Launcher    | `http://localhost:6274?transport=streamable-http&serverUrl=http://localhost:3050/http` |
-| Prolog      | `http://localhost:6274?transport=streamable-http&serverUrl=http://localhost:3006/http` |
-| TypedPrompt | `http://localhost:6274?transport=streamable-http&serverUrl=http://localhost:3020/http` |
-| Novelist    | `http://localhost:6274?transport=streamable-http&serverUrl=http://localhost:3066/http` |
-| DevOps      | `http://localhost:6274?transport=streamable-http&serverUrl=http://localhost:3003/http` |
-| CopilotLogs | `http://localhost:6274?transport=streamable-http&serverUrl=http://localhost:3100/http` |
+| Servidor | URL Inspector |
+| -------- | ------------- |
 
----
+## (Consultar))
 
 ## Arquitectura
 

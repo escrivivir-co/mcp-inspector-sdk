@@ -10,6 +10,11 @@
       "transport": "streamable-http",
       "description": "Prolog MCP Server - Queries Prolog + Knowledge Base management"
     },
+    "aaia-mcp-server": {
+      "url": "http://localhost:3007/http",
+      "transport": "streamable-http",
+      "description": "AAIA MCP Server - FIAs Gallery"
+    },
     "typed-prompt-mcp-server": {
       "url": "http://localhost:3020/http",
       "transport": "streamable-http",
